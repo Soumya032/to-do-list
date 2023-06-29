@@ -127,6 +127,6 @@ app.post("/delete",(req,res) => {
 
 
 
-app.listen(3000 ||  process.env.port, (req,res) => {
+app.listen(3000 ||  process.env.PORT, (req,res) => {
     console.log("server stared at port 3000");
 })
