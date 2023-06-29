@@ -1,0 +1,44 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>First ejs file</title>
+</head>
+<body>  -->
+<%- include("header")  -%>
+<div class="box" id="heading">
+    <h1><%=title%> </h1>
+</div>
+
+
+<div class="box">
+          <p style="text-align: center;">welcome to your to do list<br>hit the + button to add a new item</p>
+
+        <% for(var i=0;i<activity.length;i++) { %>
+            <form action="/delete" method="post" id="deletePost" >
+            <div class="item">
+                <input type="checkbox" name="deleteornot" onchange="this.form.submit()" value="<%=activity[i]._id %>">
+                <p><%=activity[i].name%></p>
+            </div>
+        </form>          
+        <% } %>
+
+        <form action="/" method="post" class="item">
+            <input type="text" name="new" placeholder="new item" autocomplete="off">
+            <div class="flex">
+            <button type="submit" name="push" value="<%= pushType %>">+</button>
+            <button onClick="refreshPage()">-</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+function refreshPage(){
+    window.location.reload();
+} 
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<%- include("footer") -%>
